@@ -1,0 +1,62 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace net.michaelbaer.tenderingnetwork
+
+participant AnnouncerParticipant identified by participantKey {
+  o String participantKey
+  o String name
+}
+
+participant BidderParticipant identified by participantId {
+  o String participantId
+  o String name
+}
+
+// participant EvaluatorParticipant identified by participantId {
+//   o String participantId
+//   o String name
+// }
+
+asset TenderAsset identified by tenderId {
+  o String tenderId
+  --> AnnouncerParticipant owner
+}
+
+asset OfferAsset identified by offerId {
+  o String offerId
+  --> BidderParticipant owner
+  --> TenderAsset tender
+  o Integer amount
+}
+
+transaction OfferTransaction {
+  --> OfferAsset offer
+  o Integer newAmount
+}
+
+// transaction SampleTransaction {
+//   --> SampleAsset asset
+//   o String newValue
+// }
+
+// event SampleEvent {
+//   --> SampleAsset asset
+//   o String oldValue
+//   o String newValue
+// }
