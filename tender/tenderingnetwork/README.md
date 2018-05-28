@@ -1,3 +1,0 @@
-# tenderingnetwork
-
-tendering example network

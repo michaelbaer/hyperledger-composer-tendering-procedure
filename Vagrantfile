@@ -68,9 +68,12 @@ Vagrant.configure("2") do |config|
     #   apt-get install -y apache2
     # SHELL
     # config.vm.provision "shell", inline: "echo Hello, World"
-    config.vm.provision "shell", path: "provision.sh", env: {}
+
+    config.vm.provision "shell", path: "provision.sh", env: {}, privileged: false
     config.vm.synced_folder "tender", "/home/vagrant/tender"
     config.vm.synced_folder "fabric-tools", "/home/vagrant/fabric-tools"
 
     config.vm.network "forwarded_port", guest: 8080, host: 8080
+    config.vm.network "forwarded_port", guest: 4200, host: 4200
+    config.vm.network "forwarded_port", guest: 3000, host: 3000
   end
