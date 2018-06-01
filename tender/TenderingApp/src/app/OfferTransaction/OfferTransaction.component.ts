@@ -103,8 +103,9 @@ export class OfferTransactionComponent implements OnInit {
       $class: 'net.michaelbaer.tenderingnetwork.OfferTransaction',
       'offer': this.offer.value,
       'newAmount': this.newAmount.value,
-      'transactionId': this.transactionId.value,
-      'timestamp': this.timestamp.value
+      // 'transactionId': this.transactionId.value,
+      // 'timestamp': this.timestamp.value
+      'timestamp': Date.now()
     };
 
     this.myForm.setValue({

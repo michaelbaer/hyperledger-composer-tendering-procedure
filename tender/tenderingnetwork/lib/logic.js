@@ -17,7 +17,11 @@
  * Write your transction processor functions here
  */
 
-
+/**
+ * Offer transaction
+ * @param {net.michaelbaer.tenderingnetwork.OfferTransaction} offerTransaction
+ * @transaction
+ */
  async function offerTransaction(tx) {
      tx.offer.amount = tx.newAmount;
      const assetRegistry = await getAssetRegistry('net.michaelbaer.tenderingnetwork.OfferAsset');
